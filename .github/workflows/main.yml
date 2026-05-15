@@ -5,7 +5,7 @@ on: [push]
 jobs:
  sast_scan:
    name: Exécution du scan avec Bandit
-   runs-on: ubuntu-22.04
+   runs-on: ubuntu-latest
 
    steps:
    - name: Vérification de code
@@ -31,7 +31,7 @@ jobs:
 
  scan_image:
    name: Build l'image et Exécution du scan de l'image
-   runs-on: ubuntu-22.04
+   runs-on: ubuntu-latest
 
    steps:
    - name: Vérification de code
@@ -40,7 +40,7 @@ jobs:
    - name: Installation de Docker
      uses: docker-practice/actions-setup-docker@v1
      with:
-      docker_version: '20.10.7'
+      docker_version: '20.10'
 
    - name: Construire l'image Docker
      run: docker build -f Dockerfile -t myapp:latest .
