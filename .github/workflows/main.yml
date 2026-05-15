@@ -23,7 +23,7 @@ jobs:
      run: bandit -ll -ii -r . -f json -o rapport-bandit.json
    
    - name: Charger l'artéfact
-     uses: actions/upload-artifact@v3
+     uses: actions/upload-artifact@v4
      if: always()
      with:
        name: recherche-bandit
