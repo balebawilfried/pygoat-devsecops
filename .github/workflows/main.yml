@@ -35,7 +35,7 @@ jobs:
 
    steps:
    - name: Vérification de code
-     uses: actions/checkout@v2
+     uses: actions/checkout@v4
      
    - name: Installation de Docker
      uses: docker-practice/actions-setup-docker@v1
@@ -47,7 +47,7 @@ jobs:
 
    - name: Scan avec Docker Scout
      run: |
-       curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+       curl -fsSL https://github.com/docker/scout-cli/blob/main/install.sh -o install-scout.sh
        sh install-scout.sh
        docker scout quickview
        docker scout cves
