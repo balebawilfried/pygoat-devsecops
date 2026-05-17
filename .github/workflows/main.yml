@@ -52,7 +52,11 @@ jobs:
 
    - name: Construire l'image Docker
      #run: docker build -f Dockerfile -t myapp:latest .
-     run: docker build -t myapp:latest .
+     #run: docker build -t myapp:latest .
+     run: |
+       pwd
+       ls -la
+       docker build --progress=plain -t myapp:latest .
 
    - name: Scan avec Docker Scout
      run: |
