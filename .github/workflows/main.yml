@@ -5,7 +5,7 @@ on: [push]
 jobs:
  sast_scan:
    name: Exécution du scan avec Bandit
-   runs-on: ubuntu-22.04
+   runs-on: ubuntu-latest
 
    steps:
    - name: Vérification de code
@@ -31,7 +31,7 @@ jobs:
 
  scan_image:
    name: Build l'image et Exécution du scan de l'image
-   runs-on: ubuntu-22.04
+   runs-on: ubuntu-latest
 
    steps:
    - name: Vérification de code
@@ -51,14 +51,15 @@ jobs:
         docker buildx version
 
    - name: Construire l'image Docker
-     run: docker build -f Dockerfile -t myapp:latest .
+     #run: docker build -f Dockerfile -t myapp:latest .
+     run: docker build -t myapp:latest .
 
    - name: Scan avec Docker Scout
      run: |
        curl -fsSL https://github.com/docker/scout-cli/blob/main/install.sh -o install-scout.sh
        sh install-scout.sh
 
-       echo ${{ secrets.REPO_PWD }} | docker login -u ${{ secrets.REPO_USER }} --password-stdin 
+       #echo ${{ secrets.REPO_PWD }} | docker login -u ${{ secrets.REPO_USER }} --password-stdin 
        
        docker scout quickview
        docker scout cves
